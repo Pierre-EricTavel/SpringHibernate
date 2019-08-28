@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 26, 2019 10:06:51 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="ittamaria" name="net.itta.springhibernate.pojo.Personne" optimistic-lock="version" table="personnes">
+    <id name="id" type="int">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="naissance" type="date">
+      <column length="10" name="NAISSANCE"/>
+    </property>
+    <property name="nom" type="string">
+      <column name="NOM"/>
+    </property>
+    <property name="prenom" type="string">
+      <column name="PRENOM"/>
+    </property>
+    <set fetch="join" inverse="false" lazy="true" name="voitures" table="voiture">
+      <key>
+        <column name="proprietaireID"/>
+      </key>
+      <one-to-many class="net.itta.springhibernate.pojo.Voiture"/>
+    </set>
+  </class>
+</hibernate-mapping>
